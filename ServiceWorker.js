@@ -1,4 +1,4 @@
-const cacheName = "Gob-This is fine-2.3";
+const cacheName = "Gob-This is fine-2.3.4";
 const contentToCache = [
     "Build/6.loader.js",
     "Build/6.framework.js",
