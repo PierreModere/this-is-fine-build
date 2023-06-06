@@ -1976,13 +1976,13 @@ var tempI64;
 // === Body ===
 
 var ASM_CONSTS = {
-  4309136: function() {Module['emscripten_get_now_backup'] = performance.now;},  
- 4309191: function($0) {performance.now = function() { return $0; };},  
- 4309239: function($0) {performance.now = function() { return $0; };},  
- 4309287: function() {performance.now = Module['emscripten_get_now_backup'];},  
- 4309342: function() {return Module.webglContextAttributes.premultipliedAlpha;},  
- 4309403: function() {return Module.webglContextAttributes.preserveDrawingBuffer;},  
- 4309467: function() {return Module.webglContextAttributes.powerPreference;}
+  4309360: function() {Module['emscripten_get_now_backup'] = performance.now;},  
+ 4309415: function($0) {performance.now = function() { return $0; };},  
+ 4309463: function($0) {performance.now = function() { return $0; };},  
+ 4309511: function() {performance.now = Module['emscripten_get_now_backup'];},  
+ 4309566: function() {return Module.webglContextAttributes.premultipliedAlpha;},  
+ 4309627: function() {return Module.webglContextAttributes.preserveDrawingBuffer;},  
+ 4309691: function() {return Module.webglContextAttributes.powerPreference;}
 };
 
 
@@ -9563,11 +9563,6 @@ var ASM_CONSTS = {
       abort('native code called abort()');
     }
 
-  function _displayDisconnection(roomCode) {
-      if (UTF8ToString(roomCode) != "")
-        window.alert("Has disconnected from room :" + UTF8ToString(roomCode));
-    }
-
   var readAsmConstArgsArray = [];
   function readAsmConstArgs(sigPtr, buf) {
       ;
@@ -12539,6 +12534,10 @@ var ASM_CONSTS = {
     return e.errno;
   }
   }
+
+  function _getPlayerDataFromLocalStorage(property) {
+      return localStorage.getItem(UTF8ToString(rproperty));
+    }
 
   function _getTempRet0() {
       return getTempRet0();
@@ -15810,7 +15809,6 @@ var asmLibraryArg = {
   "_munmap_js": __munmap_js,
   "_tzset_js": __tzset_js,
   "abort": _abort,
-  "displayDisconnection": _displayDisconnection,
   "emscripten_asm_const_int": _emscripten_asm_const_int,
   "emscripten_asm_const_int_sync_on_main_thread": _emscripten_asm_const_int_sync_on_main_thread,
   "emscripten_cancel_main_loop": _emscripten_cancel_main_loop,
@@ -15867,6 +15865,7 @@ var asmLibraryArg = {
   "fd_read": _fd_read,
   "fd_seek": _fd_seek,
   "fd_write": _fd_write,
+  "getPlayerDataFromLocalStorage": _getPlayerDataFromLocalStorage,
   "getTempRet0": _getTempRet0,
   "getaddrinfo": _getaddrinfo,
   "gethostbyaddr": _gethostbyaddr,
