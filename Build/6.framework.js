@@ -1976,13 +1976,13 @@ var tempI64;
 // === Body ===
 
 var ASM_CONSTS = {
-  4309168: function() {Module['emscripten_get_now_backup'] = performance.now;},  
- 4309223: function($0) {performance.now = function() { return $0; };},  
- 4309271: function($0) {performance.now = function() { return $0; };},  
- 4309319: function() {performance.now = Module['emscripten_get_now_backup'];},  
- 4309374: function() {return Module.webglContextAttributes.premultipliedAlpha;},  
- 4309435: function() {return Module.webglContextAttributes.preserveDrawingBuffer;},  
- 4309499: function() {return Module.webglContextAttributes.powerPreference;}
+  4309136: function() {Module['emscripten_get_now_backup'] = performance.now;},  
+ 4309191: function($0) {performance.now = function() { return $0; };},  
+ 4309239: function($0) {performance.now = function() { return $0; };},  
+ 4309287: function() {performance.now = Module['emscripten_get_now_backup'];},  
+ 4309342: function() {return Module.webglContextAttributes.premultipliedAlpha;},  
+ 4309403: function() {return Module.webglContextAttributes.preserveDrawingBuffer;},  
+ 4309467: function() {return Module.webglContextAttributes.powerPreference;}
 };
 
 
@@ -9563,6 +9563,11 @@ var ASM_CONSTS = {
       abort('native code called abort()');
     }
 
+  function _displayDisconnection(roomCode) {
+      if (UTF8ToString(roomCode) != "")
+        window.alert("Has disconnected from room :" + UTF8ToString(roomCode));
+    }
+
   var readAsmConstArgsArray = [];
   function readAsmConstArgs(sigPtr, buf) {
       ;
@@ -15105,6 +15110,11 @@ var ASM_CONSTS = {
       return type;
     }
 
+  function _savePlayerData(playerID, roomCode) {
+      localStorage.setItem("playerID", UTF8ToString(playerID));
+      localStorage.setItem("roomCode", UTF8ToString(roomCode));
+    }
+
   function _setTempRet0(val) {
       setTempRet0(val);
     }
@@ -15800,6 +15810,7 @@ var asmLibraryArg = {
   "_munmap_js": __munmap_js,
   "_tzset_js": __tzset_js,
   "abort": _abort,
+  "displayDisconnection": _displayDisconnection,
   "emscripten_asm_const_int": _emscripten_asm_const_int,
   "emscripten_asm_const_int_sync_on_main_thread": _emscripten_asm_const_int_sync_on_main_thread,
   "emscripten_cancel_main_loop": _emscripten_cancel_main_loop,
@@ -16121,6 +16132,7 @@ var asmLibraryArg = {
   "invoke_vjiiiii": invoke_vjiiiii,
   "invoke_vjjjiiii": invoke_vjjjiiii,
   "llvm_eh_typeid_for": _llvm_eh_typeid_for,
+  "savePlayerData": _savePlayerData,
   "setTempRet0": _setTempRet0,
   "strftime": _strftime
 };
