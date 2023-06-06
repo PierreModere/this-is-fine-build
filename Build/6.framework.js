@@ -12536,7 +12536,7 @@ var ASM_CONSTS = {
   }
 
   function _getPlayerDataFromLocalStorage(property) {
-      return localStorage.getItem(UTF8ToString(rproperty));
+      return localStorage.getItem(UTF8ToString(property));
     }
 
   function _getTempRet0() {
