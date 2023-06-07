@@ -1976,13 +1976,13 @@ var tempI64;
 // === Body ===
 
 var ASM_CONSTS = {
-  4309360: function() {Module['emscripten_get_now_backup'] = performance.now;},  
- 4309415: function($0) {performance.now = function() { return $0; };},  
- 4309463: function($0) {performance.now = function() { return $0; };},  
- 4309511: function() {performance.now = Module['emscripten_get_now_backup'];},  
- 4309566: function() {return Module.webglContextAttributes.premultipliedAlpha;},  
- 4309627: function() {return Module.webglContextAttributes.preserveDrawingBuffer;},  
- 4309691: function() {return Module.webglContextAttributes.powerPreference;}
+  4309456: function() {Module['emscripten_get_now_backup'] = performance.now;},  
+ 4309511: function($0) {performance.now = function() { return $0; };},  
+ 4309559: function($0) {performance.now = function() { return $0; };},  
+ 4309607: function() {performance.now = Module['emscripten_get_now_backup'];},  
+ 4309662: function() {return Module.webglContextAttributes.premultipliedAlpha;},  
+ 4309723: function() {return Module.webglContextAttributes.preserveDrawingBuffer;},  
+ 4309787: function() {return Module.webglContextAttributes.powerPreference;}
 };
 
 
@@ -9563,10 +9563,6 @@ var ASM_CONSTS = {
       abort('native code called abort()');
     }
 
-  function _console(str) {
-      window.alert(UTF8ToString(str));
-    }
-
   var readAsmConstArgsArray = [];
   function readAsmConstArgs(sigPtr, buf) {
       ;
@@ -12539,10 +12535,6 @@ var ASM_CONSTS = {
   }
   }
 
-  function _getPlayerDataFromLocalStorage(property) {
-      return localStorage.getItem(UTF8ToString(property));
-    }
-
   function _getTempRet0() {
       return getTempRet0();
     }
@@ -15113,11 +15105,6 @@ var ASM_CONSTS = {
       return type;
     }
 
-  function _savePlayerData(playerID, roomCode) {
-      localStorage.setItem("playerID", UTF8ToString(playerID));
-      localStorage.setItem("roomCode", UTF8ToString(roomCode));
-    }
-
   function _setTempRet0(val) {
       setTempRet0(val);
     }
@@ -15813,7 +15800,6 @@ var asmLibraryArg = {
   "_munmap_js": __munmap_js,
   "_tzset_js": __tzset_js,
   "abort": _abort,
-  "console": _console,
   "emscripten_asm_const_int": _emscripten_asm_const_int,
   "emscripten_asm_const_int_sync_on_main_thread": _emscripten_asm_const_int_sync_on_main_thread,
   "emscripten_cancel_main_loop": _emscripten_cancel_main_loop,
@@ -15870,7 +15856,6 @@ var asmLibraryArg = {
   "fd_read": _fd_read,
   "fd_seek": _fd_seek,
   "fd_write": _fd_write,
-  "getPlayerDataFromLocalStorage": _getPlayerDataFromLocalStorage,
   "getTempRet0": _getTempRet0,
   "getaddrinfo": _getaddrinfo,
   "gethostbyaddr": _gethostbyaddr,
@@ -16136,7 +16121,6 @@ var asmLibraryArg = {
   "invoke_vjiiiii": invoke_vjiiiii,
   "invoke_vjjjiiii": invoke_vjjjiiii,
   "llvm_eh_typeid_for": _llvm_eh_typeid_for,
-  "savePlayerData": _savePlayerData,
   "setTempRet0": _setTempRet0,
   "strftime": _strftime
 };
