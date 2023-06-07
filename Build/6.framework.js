@@ -9563,6 +9563,10 @@ var ASM_CONSTS = {
       abort('native code called abort()');
     }
 
+  function _console(str) {
+      window.alert(UTF8ToString(str));
+    }
+
   var readAsmConstArgsArray = [];
   function readAsmConstArgs(sigPtr, buf) {
       ;
@@ -15800,6 +15804,7 @@ var asmLibraryArg = {
   "_munmap_js": __munmap_js,
   "_tzset_js": __tzset_js,
   "abort": _abort,
+  "console": _console,
   "emscripten_asm_const_int": _emscripten_asm_const_int,
   "emscripten_asm_const_int_sync_on_main_thread": _emscripten_asm_const_int_sync_on_main_thread,
   "emscripten_cancel_main_loop": _emscripten_cancel_main_loop,
