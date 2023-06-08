@@ -1976,13 +1976,13 @@ var tempI64;
 // === Body ===
 
 var ASM_CONSTS = {
-  4309456: function() {Module['emscripten_get_now_backup'] = performance.now;},  
- 4309511: function($0) {performance.now = function() { return $0; };},  
- 4309559: function($0) {performance.now = function() { return $0; };},  
- 4309607: function() {performance.now = Module['emscripten_get_now_backup'];},  
- 4309662: function() {return Module.webglContextAttributes.premultipliedAlpha;},  
- 4309723: function() {return Module.webglContextAttributes.preserveDrawingBuffer;},  
- 4309787: function() {return Module.webglContextAttributes.powerPreference;}
+  4309584: function() {Module['emscripten_get_now_backup'] = performance.now;},  
+ 4309639: function($0) {performance.now = function() { return $0; };},  
+ 4309687: function($0) {performance.now = function() { return $0; };},  
+ 4309735: function() {performance.now = Module['emscripten_get_now_backup'];},  
+ 4309790: function() {return Module.webglContextAttributes.premultipliedAlpha;},  
+ 4309851: function() {return Module.webglContextAttributes.preserveDrawingBuffer;},  
+ 4309915: function() {return Module.webglContextAttributes.powerPreference;}
 };
 
 
@@ -12539,6 +12539,17 @@ var ASM_CONSTS = {
   }
   }
 
+  function _getPlayerDataFromLocalStorage(property) {
+      const returnStr = localStorage.getItem(UTF8ToString(property));
+      if (returnStr != null) {
+        var bufferSize = lengthBytesUTF8(returnStr) + 1;
+        var buffer = _malloc(bufferSize);
+        stringToUTF8(returnStr, buffer, bufferSize);
+        return buffer;
+      }
+      return null;
+    }
+
   function _getTempRet0() {
       return getTempRet0();
     }
@@ -15109,6 +15120,11 @@ var ASM_CONSTS = {
       return type;
     }
 
+  function _savePlayerData(playerID, roomCode) {
+      localStorage.setItem("playerID", UTF8ToString(playerID));
+      localStorage.setItem("roomCode", UTF8ToString(roomCode));
+    }
+
   function _setTempRet0(val) {
       setTempRet0(val);
     }
@@ -15861,6 +15877,7 @@ var asmLibraryArg = {
   "fd_read": _fd_read,
   "fd_seek": _fd_seek,
   "fd_write": _fd_write,
+  "getPlayerDataFromLocalStorage": _getPlayerDataFromLocalStorage,
   "getTempRet0": _getTempRet0,
   "getaddrinfo": _getaddrinfo,
   "gethostbyaddr": _gethostbyaddr,
@@ -16126,6 +16143,7 @@ var asmLibraryArg = {
   "invoke_vjiiiii": invoke_vjiiiii,
   "invoke_vjjjiiii": invoke_vjjjiiii,
   "llvm_eh_typeid_for": _llvm_eh_typeid_for,
+  "savePlayerData": _savePlayerData,
   "setTempRet0": _setTempRet0,
   "strftime": _strftime
 };
