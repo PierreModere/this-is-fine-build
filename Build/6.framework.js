@@ -1976,13 +1976,13 @@ var tempI64;
 // === Body ===
 
 var ASM_CONSTS = {
-  4322576: function() {Module['emscripten_get_now_backup'] = performance.now;},  
- 4322631: function($0) {performance.now = function() { return $0; };},  
- 4322679: function($0) {performance.now = function() { return $0; };},  
- 4322727: function() {performance.now = Module['emscripten_get_now_backup'];},  
- 4322782: function() {return Module.webglContextAttributes.premultipliedAlpha;},  
- 4322843: function() {return Module.webglContextAttributes.preserveDrawingBuffer;},  
- 4322907: function() {return Module.webglContextAttributes.powerPreference;}
+  4322400: function() {Module['emscripten_get_now_backup'] = performance.now;},  
+ 4322455: function($0) {performance.now = function() { return $0; };},  
+ 4322503: function($0) {performance.now = function() { return $0; };},  
+ 4322551: function() {performance.now = Module['emscripten_get_now_backup'];},  
+ 4322606: function() {return Module.webglContextAttributes.premultipliedAlpha;},  
+ 4322667: function() {return Module.webglContextAttributes.preserveDrawingBuffer;},  
+ 4322731: function() {return Module.webglContextAttributes.powerPreference;}
 };
 
 
@@ -4336,6 +4336,13 @@ var ASM_CONSTS = {
   	{
   		HEAPF64[outWidth >> 3] = Module.SystemInfo.width;
   		HEAPF64[outHeight >> 3] = Module.SystemInfo.height;
+  	}
+
+  function _JS_SystemInfo_GetStreamingAssetsURL(buffer, bufferSize) 
+  	{
+  		if (buffer)
+  			stringToUTF8(Module.streamingAssetsUrl, buffer, bufferSize);
+  		return lengthBytesUTF8(Module.streamingAssetsUrl);
   	}
 
   function _JS_SystemInfo_HasAstcHdr()
@@ -16120,6 +16127,7 @@ var asmLibraryArg = {
   "JS_SystemInfo_GetOS": _JS_SystemInfo_GetOS,
   "JS_SystemInfo_GetPreferredDevicePixelRatio": _JS_SystemInfo_GetPreferredDevicePixelRatio,
   "JS_SystemInfo_GetScreenSize": _JS_SystemInfo_GetScreenSize,
+  "JS_SystemInfo_GetStreamingAssetsURL": _JS_SystemInfo_GetStreamingAssetsURL,
   "JS_SystemInfo_HasAstcHdr": _JS_SystemInfo_HasAstcHdr,
   "JS_SystemInfo_HasCursorLock": _JS_SystemInfo_HasCursorLock,
   "JS_SystemInfo_HasFullscreen": _JS_SystemInfo_HasFullscreen,
@@ -16458,6 +16466,7 @@ var asmLibraryArg = {
   "invoke_ii": invoke_ii,
   "invoke_iidi": invoke_iidi,
   "invoke_iiffi": invoke_iiffi,
+  "invoke_iiffii": invoke_iiffii,
   "invoke_iifi": invoke_iifi,
   "invoke_iii": invoke_iii,
   "invoke_iiifi": invoke_iiifi,
@@ -16977,6 +16986,9 @@ var dynCall_vjiiiii = Module["dynCall_vjiiiii"] = createExportWrapper("dynCall_v
 var dynCall_jiiiii = Module["dynCall_jiiiii"] = createExportWrapper("dynCall_jiiiii");
 
 /** @type {function(...*):?} */
+var dynCall_iiffii = Module["dynCall_iiffii"] = createExportWrapper("dynCall_iiffii");
+
+/** @type {function(...*):?} */
 var dynCall_viffi = Module["dynCall_viffi"] = createExportWrapper("dynCall_viffi");
 
 /** @type {function(...*):?} */
@@ -16984,9 +16996,6 @@ var dynCall_iiiffi = Module["dynCall_iiiffi"] = createExportWrapper("dynCall_iii
 
 /** @type {function(...*):?} */
 var dynCall_iifii = Module["dynCall_iifii"] = createExportWrapper("dynCall_iifii");
-
-/** @type {function(...*):?} */
-var dynCall_iiffii = Module["dynCall_iiffii"] = createExportWrapper("dynCall_iiffii");
 
 /** @type {function(...*):?} */
 var dynCall_iiifiii = Module["dynCall_iiifiii"] = createExportWrapper("dynCall_iiifiii");
@@ -18554,6 +18563,17 @@ function invoke_iiffi(index,a1,a2,a3,a4) {
   var sp = stackSave();
   try {
     return dynCall_iiffi(index,a1,a2,a3,a4);
+  } catch(e) {
+    stackRestore(sp);
+    if (e !== e+0) throw e;
+    _setThrew(1, 0);
+  }
+}
+
+function invoke_iiffii(index,a1,a2,a3,a4,a5) {
+  var sp = stackSave();
+  try {
+    return dynCall_iiffii(index,a1,a2,a3,a4,a5);
   } catch(e) {
     stackRestore(sp);
     if (e !== e+0) throw e;
