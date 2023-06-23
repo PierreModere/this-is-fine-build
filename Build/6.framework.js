@@ -1976,13 +1976,13 @@ var tempI64;
 // === Body ===
 
 var ASM_CONSTS = {
-  4323600: function() {Module['emscripten_get_now_backup'] = performance.now;},  
- 4323655: function($0) {performance.now = function() { return $0; };},  
- 4323703: function($0) {performance.now = function() { return $0; };},  
- 4323751: function() {performance.now = Module['emscripten_get_now_backup'];},  
- 4323806: function() {return Module.webglContextAttributes.premultipliedAlpha;},  
- 4323867: function() {return Module.webglContextAttributes.preserveDrawingBuffer;},  
- 4323931: function() {return Module.webglContextAttributes.powerPreference;}
+  4324624: function() {Module['emscripten_get_now_backup'] = performance.now;},  
+ 4324679: function($0) {performance.now = function() { return $0; };},  
+ 4324727: function($0) {performance.now = function() { return $0; };},  
+ 4324775: function() {performance.now = Module['emscripten_get_now_backup'];},  
+ 4324830: function() {return Module.webglContextAttributes.premultipliedAlpha;},  
+ 4324891: function() {return Module.webglContextAttributes.preserveDrawingBuffer;},  
+ 4324955: function() {return Module.webglContextAttributes.powerPreference;}
 };
 
 
@@ -9941,6 +9941,11 @@ var ASM_CONSTS = {
       abort('native code called abort()');
     }
 
+  function _clearLocalStorage() {
+      localStorage.clear();
+      console.log("localstorage vidé !");
+    }
+
   function _console(str) {
       window.alert(UTF8ToString(str));
     }
@@ -15498,6 +15503,10 @@ var ASM_CONSTS = {
       return type;
     }
 
+  function _restartGame() {
+      window.location.reload();
+    }
+
   function _savePlayerData(playerID, roomCode) {
       localStorage.setItem("playerID", UTF8ToString(playerID));
       localStorage.setItem("roomCode", UTF8ToString(roomCode));
@@ -16225,6 +16234,7 @@ var asmLibraryArg = {
   "_munmap_js": __munmap_js,
   "_tzset_js": __tzset_js,
   "abort": _abort,
+  "clearLocalStorage": _clearLocalStorage,
   "console": _console,
   "emscripten_asm_const_int": _emscripten_asm_const_int,
   "emscripten_asm_const_int_sync_on_main_thread": _emscripten_asm_const_int_sync_on_main_thread,
@@ -16549,6 +16559,7 @@ var asmLibraryArg = {
   "invoke_vjiiiii": invoke_vjiiiii,
   "invoke_vjjjiiii": invoke_vjjjiiii,
   "llvm_eh_typeid_for": _llvm_eh_typeid_for,
+  "restartGame": _restartGame,
   "savePlayerData": _savePlayerData,
   "setTempRet0": _setTempRet0,
   "strftime": _strftime
