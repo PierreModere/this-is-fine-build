@@ -15468,6 +15468,11 @@ var ASM_CONSTS = {
       return bytes.length-1;
     }
 
+  function _vibrate() {
+    // Vibrate for 500ms
+    navigator.vibrate([500]);
+    }
+
   var FSNode = /** @constructor */ function(parent, name, mode, rdev) {
     if (!parent) {
       parent = this;  // root node sets parent to itself
@@ -16157,7 +16162,8 @@ var asmLibraryArg = {
   "restartGame": _restartGame,
   "savePlayerData": _savePlayerData,
   "setTempRet0": _setTempRet0,
-  "strftime": _strftime
+  "strftime": _strftime,
+  "vibrate": _vibrate
 };
 var asm = createWasm();
 /** @type {function(...*):?} */
