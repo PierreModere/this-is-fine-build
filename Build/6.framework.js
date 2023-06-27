@@ -15469,8 +15469,8 @@ var ASM_CONSTS = {
     }
 
   function _vibrate() {
-    // Vibrate for 500ms
-    navigator.vibrate([500]);
+      const canVibrate = window.navigator.vibrate;
+      if (canVibrate) window.navigator.vibrate(200);
     }
 
   var FSNode = /** @constructor */ function(parent, name, mode, rdev) {
